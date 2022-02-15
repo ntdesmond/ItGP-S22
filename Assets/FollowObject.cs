@@ -1,0 +1,24 @@
+using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
+
+public class FollowObject : MonoBehaviour
+{
+    public Transform objectToFollow;
+
+    private Vector3 _offset;
+    private float _originalY;
+    // Start is called before the first frame update
+    void Awake()
+    {
+        var position = transform.position;
+        _offset = position - objectToFollow.position;
+        _originalY = position.y;
+    }
+
+    private void LateUpdate()
+    {
+        var newPosition = objectToFollow.position + _offset;
+        newPosition.y = _originalY;
+        transform.position = newPosition;
+    }
+}
