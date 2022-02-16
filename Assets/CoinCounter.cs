@@ -8,16 +8,18 @@ public class CoinCounter : MonoBehaviour
     private int _totalCoins;
     private int _collectedCoins;
     
+    private string CoinCountText => $"{_collectedCoins}/{_totalCoins}";
+    
     public void Awake()
     {
         _totalCoins = GetComponentsInChildren<Coin>().Length;
+        textField.text = CoinCountText;
     }
     
     public void OnCoinCollected()
     {
         _collectedCoins++;
-        var collected = $"{_collectedCoins}/{_totalCoins}";
-        Debug.Log($"Ding! {collected} coin(s) collected");
-        textField.text = collected;
+        Debug.Log($"Ding! {CoinCountText} coin(s) collected");
+        textField.text = CoinCountText;
     }
 }
