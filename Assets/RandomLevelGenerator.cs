@@ -60,6 +60,7 @@ public class RandomLevelGenerator : MonoBehaviour
         {
             var coin = Instantiate(coinPrefab, pathPiece);
             coin.localPosition = new Vector3(i * (1.0f / (coinCount + 1)) - 0.5f, 1.2f, 0);
+            // Scale relatively to the whole level
             coin.parent = pathPiece.parent;
             coin.localScale = Vector3.one;
         }
