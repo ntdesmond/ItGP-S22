@@ -10,9 +10,9 @@ public class CoinCounter : MonoBehaviour
     
     private string CoinCountText => $"{_collectedCoins}/{_totalCoins}";
     
-    public void Awake()
+    public void OnCoinObjectAdded()
     {
-        _totalCoins = GetComponentsInChildren<Coin>().Length;
+        _totalCoins++;
         textField.text = CoinCountText;
     }
     

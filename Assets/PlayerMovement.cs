@@ -24,7 +24,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        var newDirection = (_direction == 0 ? Vector3.forward : Vector3.right) * speed;
+        var newDirection = (_direction == 0 ? Vector3.right : Vector3.forward) * speed;
         newDirection.y = _body.velocity.y;
         _body.velocity = newDirection;
     }

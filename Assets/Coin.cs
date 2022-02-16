@@ -10,6 +10,8 @@ public class Coin : MonoBehaviour
         {
             Debug.LogWarning("No CoinCounter found");
         }
+
+        _counter.OnCoinObjectAdded();
     }
     
     private void OnTriggerEnter(Collider other)
