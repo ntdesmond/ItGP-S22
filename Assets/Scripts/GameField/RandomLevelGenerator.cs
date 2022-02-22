@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Assertions;
 
 namespace GameField
 {
@@ -6,12 +7,30 @@ namespace GameField
     {
         [Min(1)]
         public int pathPiecesCount;
+        
+        [Min(1)]
+        public int minPathPieceLength;
+        
+        [Min(1)]
+        public int maxPathPieceLength;
+        
+        [Min(1)]
+        public float coinSpawnHeight;
+        
+        [Range(0, 1)]
+        public float maxCoinRatio;
+        
         public Transform pathPiecePrefab;   
         public Transform levelPath;
         public Transform finishPrefab;
         public Transform coinPrefab;
+
         private void Awake()
         {
+            Assert.IsTrue(
+                minPathPieceLength <= maxPathPieceLength, 
+                "Minimal path piece length should not exceed the maximum path piece length"
+            );
             var lastPathPiece = CreatePath();
             PlaceFinishObject(lastPathPiece);
         }
@@ -30,7 +49,7 @@ namespace GameField
             do
             {
                 var newScale = initialPathPieceScale;
-                newScale.x = Random.Range(3, 10);
+                newScale.x = Random.Range(minPathPieceLength, maxPathPieceLength);
                 lastPathPiece = Instantiate(pathPiecePrefab, levelPath);
                 lastPathPiece.localScale = newScale;
                 var rotation = i % 2 == 0 ? Quaternion.identity : Quaternion.AngleAxis(-90, Vector3.up);
@@ -55,11 +74,12 @@ namespace GameField
 
         private void PlaceCoins(Transform pathPiece)
         {
-            var coinCount = (int)Random.Range(0, pathPiece.localScale.x / 3);
+            var maxCoinCount = pathPiece.localScale.x * maxCoinRatio;
+            var coinCount = (int)Random.Range(0.0f, maxCoinCount);
             for (var i = 1; i <= coinCount; i++)
             {
                 var coin = Instantiate(coinPrefab, pathPiece);
-                coin.localPosition = new Vector3(i * (1.0f / (coinCount + 1)) - 0.5f, 1.2f, 0);
+                coin.localPosition = new Vector3(i * (1.0f / (coinCount + 1)) - 0.5f, coinSpawnHeight, 0);
                 // Scale relatively to the whole level
                 coin.parent = pathPiece.parent;
                 coin.localScale = Vector3.one;
