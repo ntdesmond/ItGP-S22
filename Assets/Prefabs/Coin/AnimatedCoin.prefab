@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8285781429501582581}
-  - component: {fileID: 9110868001784757357}
   m_Layer: 0
   m_Name: AnimatedCoin
   m_TagString: Untagged
@@ -32,25 +31,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &9110868001784757357
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7900924619876128813}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 04f33000edea77140b9125a56e23ae9c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &5932576288835926248
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,8 +88,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab2438336fb3ccf4699c96c1420e1156, type: 3}
+--- !u!1 &6426143179408650134 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 827116003464566654, guid: ab2438336fb3ccf4699c96c1420e1156, type: 3}
+  m_PrefabInstance: {fileID: 5932576288835926248}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5095752866545131766 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1505185823243474974, guid: ab2438336fb3ccf4699c96c1420e1156, type: 3}
   m_PrefabInstance: {fileID: 5932576288835926248}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &6890418730721513234
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6426143179408650134}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 04f33000edea77140b9125a56e23ae9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
