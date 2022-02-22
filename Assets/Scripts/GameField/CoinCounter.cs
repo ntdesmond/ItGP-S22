@@ -1,24 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CoinCounter : MonoBehaviour
+namespace GameField
 {
-    public Text textField;
-    private int _totalCoins;
-    private int _collectedCoins;
-    
-    private string CoinCountText => $"{_collectedCoins}/{_totalCoins}";
-    
-    public void OnCoinObjectAdded()
+    public class CoinCounter : MonoBehaviour
     {
-        _totalCoins++;
-        textField.text = CoinCountText;
-    }
+        public Text textField;
+        private int _totalCoins;
+        private int _collectedCoins;
     
-    public void OnCoinCollected()
-    {
-        _collectedCoins++;
-        Debug.Log($"Ding! {CoinCountText} coin(s) collected");
-        textField.text = CoinCountText;
+        private string CoinCountText => $"{_collectedCoins}/{_totalCoins}";
+    
+        public void OnCoinObjectAdded()
+        {
+            _totalCoins++;
+            textField.text = CoinCountText;
+        }
+    
+        public void OnCoinCollected()
+        {
+            _collectedCoins++;
+            Debug.Log($"Ding! {CoinCountText} coin(s) collected");
+            textField.text = CoinCountText;
+        }
     }
 }

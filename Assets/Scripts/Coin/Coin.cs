@@ -1,30 +1,35 @@
+using GameField;
+using Player;
 using UnityEngine;
 
-public class Coin : MonoBehaviour
+namespace Coin
 {
-    private CoinCounter _counter;
-    private void Awake()
+    public class Coin : MonoBehaviour
     {
-        _counter = GetComponentInParent<CoinCounter>();
-        if (_counter == null)
+        private CoinCounter _counter;
+        private void Awake()
         {
-            Debug.LogWarning("No CoinCounter found");
-        }
+            _counter = GetComponentInParent<CoinCounter>();
+            if (_counter == null)
+            {
+                Debug.LogWarning("No CoinCounter found");
+            }
 
-        _counter.OnCoinObjectAdded();
-    }
-    
-    private void OnTriggerEnter(Collider other)
-    {
-        if (!other.TryGetComponent<PlayerMovement>(out _))
-        {
-            return;
+            _counter.OnCoinObjectAdded();
         }
-        Destroy(gameObject);
-        
-        if (_counter != null)
+    
+        private void OnTriggerEnter(Collider other)
         {
-            _counter.OnCoinCollected();
+            if (!other.TryGetComponent<PlayerMovement>(out _))
+            {
+                return;
+            }
+            Destroy(gameObject);
+        
+            if (_counter != null)
+            {
+                _counter.OnCoinCollected();
+            }
         }
     }
 }

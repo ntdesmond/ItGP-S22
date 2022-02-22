@@ -1,14 +1,18 @@
+using Player;
 using UnityEngine;
 
-public class FinishAction : MonoBehaviour
+namespace GameField
 {
-    private void OnTriggerEnter(Collider other)
+    public class FinishAction : MonoBehaviour
     {
-        if (!other.TryGetComponent<PlayerMovement>(out var playerMovement))
+        private void OnTriggerEnter(Collider other)
         {
-            return;
+            if (!other.TryGetComponent<PlayerMovement>(out var playerMovement))
+            {
+                return;
+            }
+            Debug.Log("Yay!");
+            playerMovement.enabled = false;
         }
-        Debug.Log("Yay!");
-        playerMovement.enabled = false;
     }
 }

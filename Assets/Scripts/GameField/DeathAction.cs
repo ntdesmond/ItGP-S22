@@ -1,14 +1,18 @@
+using Player;
 using UnityEngine;
 
-public class DeathAction : MonoBehaviour
+namespace GameField
 {
-    private void OnTriggerEnter(Collider other)
+    public class DeathAction : MonoBehaviour
     {
-        if (!other.TryGetComponent<PlayerMovement>(out var playerMovement))
+        private void OnTriggerEnter(Collider other)
         {
-            return;
+            if (!other.TryGetComponent<PlayerMovement>(out var playerMovement))
+            {
+                return;
+            }
+            Debug.Log("Omae wa mou shindeiru");
+            playerMovement.enabled = false;
         }
-        Debug.Log("Omae wa mou shindeiru");
-        playerMovement.enabled = false;
     }
 }

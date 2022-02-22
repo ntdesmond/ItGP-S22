@@ -1,38 +1,41 @@
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+namespace Player
 {
-    public float speed;
-    private Rigidbody _body;
-    private Vector3 _direction = Vector3.right;
-
-    private void Start()
+    public class PlayerMovement : MonoBehaviour
     {
-        _body = GetComponent<Rigidbody>();
-    }
+        public float speed;
+        private Rigidbody _body;
+        private Vector3 _direction = Vector3.right;
 
-    private void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
+        private void Start()
         {
-            _direction = _direction == Vector3.right ? Vector3.forward : Vector3.right;
+            _body = GetComponent<Rigidbody>();
         }
-    }
 
-    private void FixedUpdate()
-    {
-        UpdateVelocity(_direction);
-    }
+        private void Update()
+        {
+            if (Input.GetMouseButtonDown(0))
+            {
+                _direction = _direction == Vector3.right ? Vector3.forward : Vector3.right;
+            }
+        }
 
-    private void OnDisable()
-    {
-        UpdateVelocity(Vector3.zero);
-    }
+        private void FixedUpdate()
+        {
+            UpdateVelocity(_direction);
+        }
 
-    private void UpdateVelocity(Vector3 direction)
-    {
-        var newVelocity = direction * speed;
-        newVelocity.y = _body.velocity.y;
-        _body.velocity = newVelocity;
+        private void OnDisable()
+        {
+            UpdateVelocity(Vector3.zero);
+        }
+
+        private void UpdateVelocity(Vector3 direction)
+        {
+            var newVelocity = direction * speed;
+            newVelocity.y = _body.velocity.y;
+            _body.velocity = newVelocity;
+        }
     }
 }
