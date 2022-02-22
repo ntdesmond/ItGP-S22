@@ -1,10 +1,10 @@
 using UnityEngine;
-using UnityEngine.Assertions;
 
 namespace GameField
 {
     public class RandomLevelGenerator : MonoBehaviour
     {
+        [Min(1)]
         public int pathPiecesCount;
         public Transform pathPiecePrefab;   
         public Transform levelPath;
@@ -12,8 +12,6 @@ namespace GameField
         public Transform coinPrefab;
         private void Awake()
         {
-            Assert.IsTrue(pathPiecesCount > 0, "pathPiecesCount must be greater than 0");
-        
             var lastPathPiece = CreatePath();
             PlaceFinishObject(lastPathPiece);
         }
